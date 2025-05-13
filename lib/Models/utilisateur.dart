@@ -1,6 +1,13 @@
-class Utilisateur {
+import 'package:hive/hive.dart';
+part 'utilisateur.g.dart';
+
+@HiveType(typeId: 5)
+class Utilisateur extends HiveObject {
+  @HiveField(0)   
   String? Nom_utilisateur;
+  @HiveField(1)
   String? Mot_de_passe_utilisateur;
+  @HiveField(2)
   String? Type_utilisateur;
   Utilisateur({
     required this.Nom_utilisateur,

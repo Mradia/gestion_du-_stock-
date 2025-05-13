@@ -1,13 +1,25 @@
-class Client {
+import 'package:hive/hive.dart';
+part 'client.g.dart'; 
 
+@HiveType(typeId: 1)
+class Client extends HiveObject {
+  @HiveField(0)
   String? id_client;
+  @HiveField(1)
   String? name_client;
+  @HiveField(2)
   String? email_client;
+  @HiveField(3)
   String? phone_client;
+  @HiveField(4)
   String? address_client;
+  @HiveField(5)
   String? ville_client;
+  @HiveField(6)
   String? Prenom_client;
+  @HiveField(7)
   String? Pays_client;
+  @HiveField(8)
 
 
   List<String>? list_commande;

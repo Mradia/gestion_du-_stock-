@@ -1,6 +1,16 @@
-class Categorie {
+
+import 'package:hive/hive.dart';
+
+part 'categorie.g.dart';
+
+
+@HiveType(typeId: 0)
+class Categorie extends HiveObject {
+  @HiveField(0)
   String? id_categorie;
+  @HiveField(1)
   String ?nom_categorie;
+  @HiveField(2)
   List<String>? Produits;
   Categorie({
     required this.id_categorie,
@@ -11,7 +21,7 @@ class Categorie {
     id_categorie = json['id_categorie'];
     nom_categorie = json['nom_categorie'];
     Produits = List<String>.from(json['Produits']);
-  }
+  }     
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id_categorie'] = id_categorie;

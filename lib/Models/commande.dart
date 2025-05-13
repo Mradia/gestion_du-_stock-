@@ -1,11 +1,23 @@
-class Commande {
+import 'package:hive/hive.dart';
+part 'commande.g.dart';
+
+@HiveType(typeId: 2)
+class Commande extends HiveObject {
+  @HiveField(0)
   String? id_commande;
+  @HiveField(1)
   String? id_client;
+  @HiveField(2)
   DateTime ? date_commande;
+  @HiveField(3)
   double? total_Ht;
+  @HiveField(4)
   double? total_TTC;
+  @HiveField(5)
   double? tVA;
+  @HiveField(6)
   List<String>? list_Clients;
+  @HiveField(7)
   List<String>? list_details_commande;
 
   Commande({

@@ -1,12 +1,25 @@
-class Produit {
- String?  id_produit;
- String?  nom_produit;
- int? Quantity;
- double? prix_produit;
- String? image_produit;
- String? id_categorie;
- List <String>? list_categorie;
- List <String>? list_details_commandes;
+import 'package:hive/hive.dart';
+part 'Produit.g.dart';
+
+@HiveType(typeId: 4)
+class Produit extends HiveObject {
+  @HiveField(0)
+  String? id_produit;
+  @HiveField(1)
+  String? nom_produit;
+  @HiveField(2)
+  int? Quantity;
+  @HiveField(3)
+  double? prix_produit;
+  @HiveField(4)
+  String? image_produit;
+  @HiveField(5)
+  String? id_categorie;
+  @HiveField(6)
+  List<String>? list_categorie;
+  @HiveField(7)
+  List<String>? list_details_commandes;
+
  Produit({
    required this.id_produit,
    required this.nom_produit,

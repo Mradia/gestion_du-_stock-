@@ -1,13 +1,27 @@
-class DetailsCommades {
+import 'package:hive/hive.dart';
+part 'details_commades.g.dart';
+
+@HiveType(typeId: 3)
+class DetailsCommades extends HiveObject {
+  @HiveField(0)
   String? id_Details_commande;
+  @HiveField(1)
   String ?id_commande;
+  @HiveField(2)
   String ?id_produit;
+  @HiveField(3)
   String ?nom_produit;
-  int ?quantity;
+  @HiveField(4)
+  int? quantity;  
+  @HiveField(5)
   double? prix;
+  @HiveField(6)
   double ?remise;
+  @HiveField(7)
   double ?total;
+  @HiveField(8)
   List<String>? list_produit;
+  @HiveField(9)
   List<String> ?list_commandes;
   DetailsCommades({
     required this.id_Details_commande,
