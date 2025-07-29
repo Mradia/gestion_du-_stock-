@@ -34,8 +34,9 @@ Client({
     required this.Pays_client,
     required this.list_commande,
 
+
   });
-  Client.fromJson(Map<String, dynamic> json) {
+  Client.fromJson(Map<String, dynamic> json, this.id_client) {
     id_client = json['id_client'];
     name_client = json['name_client'];
     email_client = json['email_client'];

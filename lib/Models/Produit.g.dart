@@ -21,7 +21,7 @@ class ProduitAdapter extends TypeAdapter<Produit> {
       nom_produit: fields[1] as String?,
       Quantity: fields[2] as int?,
       prix_produit: fields[3] as double?,
-      image_produit: fields[4] as String?,
+      image_produit: fields[4] as Uint8List?,
       id_categorie: fields[5] as String?,
       list_categorie: (fields[6] as List?)?.cast<String>(),
       list_details_commandes: (fields[7] as List?)?.cast<String>(),

@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:hive/hive.dart';
 part 'Produit.g.dart';
 
@@ -12,7 +14,7 @@ class Produit extends HiveObject {
   @HiveField(3)
   double? prix_produit;
   @HiveField(4)
-  String? image_produit;
+  Uint8List? image_produit;
   @HiveField(5)
   String? id_categorie;
   @HiveField(6)

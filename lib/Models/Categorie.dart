@@ -15,7 +15,7 @@ class Categorie extends HiveObject {
   Categorie({
     required this.id_categorie,
     required this.nom_categorie,
-    required this.Produits,
+    required this.Produits, 
   });
   Categorie.fromJson(Map<String, dynamic> json) {
     id_categorie = json['id_categorie'];

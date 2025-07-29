@@ -19,12 +19,12 @@ class CommandeAdapter extends TypeAdapter<Commande> {
     return Commande(
       id_commande: fields[0] as String?,
       id_client: fields[1] as String?,
-      date_commande: fields[2] as DateTime?,
+      date_commande: fields[2] as String?,
       total_Ht: fields[3] as double?,
       total_TTC: fields[4] as double?,
       tVA: fields[5] as double?,
       list_Clients: (fields[6] as List?)?.cast<String>(),
-      list_details_commande: (fields[7] as List?)?.cast<String>(),
+      list_details_commande: (fields[7] as List?)?.cast<DetailsCommades>(),
     );
   }
 

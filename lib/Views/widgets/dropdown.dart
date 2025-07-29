@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_application_gestion_stock/provider/valeur.dart';
+import 'package:provider/provider.dart';
+
 class DropdownV extends StatefulWidget {
   const DropdownV({super.key});
 
@@ -8,21 +11,26 @@ class DropdownV extends StatefulWidget {
 }
 
 class _DropdownVState extends State<DropdownV> {
-    String dropdownvalue = 'Item 1';
-
   // List of items in our dropdown menu
-  var items = [
-      'Item 1',
-      'Item 2',
-      'Item 3',
-      'Item 4',
-      'Item 5'
+  List<String> items = [
+    'All',
+    'nom',
+    'prenom',
+    'adresse',
+    'ville',
+    'telephone',
+    'email',
+    'pays',
+    'name',
   ];
+
+ 
   @override
   Widget build(BuildContext context) {
+    final dropdownProvider = Provider.of<DropdownValueProvider>(context);
     return  DropdownButton(
           // Initial Value
-          value: dropdownvalue,
+      value: dropdownProvider.dropdownValue,
 
           // Down Arrow Icon
           icon: const Icon(Icons.keyboard_arrow_down),
@@ -36,7 +44,7 @@ class _DropdownVState extends State<DropdownV> {
           // change button value to selected value
           onChanged: (String? newValue) {
             setState(() {
-              dropdownvalue = newValue!;
+          dropdownProvider.dropdownValue = newValue!;
             });
   }
         );

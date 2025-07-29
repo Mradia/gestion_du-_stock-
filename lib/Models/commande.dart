@@ -1,3 +1,4 @@
+import 'package:flutter_application_gestion_stock/Models/details_commades.dart';
 import 'package:hive/hive.dart';
 part 'commande.g.dart';
 
@@ -8,7 +9,7 @@ class Commande extends HiveObject {
   @HiveField(1)
   String? id_client;
   @HiveField(2)
-  DateTime ? date_commande;
+  String? date_commande;
   @HiveField(3)
   double? total_Ht;
   @HiveField(4)
@@ -18,7 +19,7 @@ class Commande extends HiveObject {
   @HiveField(6)
   List<String>? list_Clients;
   @HiveField(7)
-  List<String>? list_details_commande;
+  List<DetailsCommades>? list_details_commande;
 
   Commande({
     required this.id_commande,
@@ -33,18 +34,20 @@ class Commande extends HiveObject {
   Commande.fromJson(Map<String, dynamic> json) {
     id_commande = json['id_commande'];
     id_client = json['id_client'];
-    date_commande = DateTime.parse(json['date_commande']);
+    date_commande = json['date_commande'];
     total_Ht = json['total_Ht'];
     total_TTC = json['total_TTC'];
     tVA = json['tVA'];
     list_Clients = List<String>.from(json['list_Clients']);
-    list_details_commande = List<String>.from(json['list_details_commande']);
+    list_details_commande = List<DetailsCommades>.from(
+      json['list_details_commande'],
+    );
   }
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id_commande'] = id_commande;
     data['id_client'] = id_client;
-    data['date_commande'] = date_commande?.toIso8601String();
+    data['date_commande'] = date_commande;
     data['total_Ht'] = total_Ht;
     data['total_TTC'] = total_TTC;
     data['tVA'] = tVA;
@@ -55,11 +58,13 @@ class Commande extends HiveObject {
   Commande.fromMap(Map<String, dynamic> map) {
     id_commande = map['id_commande'];
     id_client = map['id_client'];
-    date_commande = DateTime.parse(map['date_commande']);
+    date_commande = map['date_commande'];
     total_Ht = map['total_Ht'];
     total_TTC = map['total_TTC'];
     tVA = map['tVA'];
     list_Clients = List<String>.from(map['list_Clients']);
-    list_details_commande = List<String>.from(map['list_details_commande']);
+    list_details_commande = List<DetailsCommades>.from(
+      map['list_details_commande'],
+    );
   }
 }

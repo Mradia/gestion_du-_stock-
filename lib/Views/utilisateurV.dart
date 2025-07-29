@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_gestion_stock/Views/HomeV.dart';
-import 'package:flutter_application_gestion_stock/Views/widgets/costumeelevateubutton.dart';
-import 'package:flutter_application_gestion_stock/Views/widgets/decorationtextfield.dart';
+import 'package:provider/provider.dart';
+
+import 'package:flutter_application_gestion_stock/Views/widgetsutilisateur/signIn.dart';
+import 'package:flutter_application_gestion_stock/Views/widgetsutilisateur/signup.dart';
+import 'package:flutter_application_gestion_stock/provider/valeur.dart';
 
 class AuthV extends StatefulWidget {
   const AuthV({super.key});
@@ -11,7 +13,7 @@ class AuthV extends StatefulWidget {
 }
 
 class _AuthVState extends State<AuthV> {
-   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final TextEditingController namUserController = TextEditingController();
   bool isVisable = true;
   bool isLoading = false;
@@ -27,86 +29,12 @@ class _AuthVState extends State<AuthV> {
     namUserController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     final double widthScreen = MediaQuery.of(context).size.width;
-    return    Row(
-      children: [   SizedBox(width: widthScreen * 0.05),
-        Container(
-        margin: EdgeInsets.only(
-          top: widthScreen * 0.15,
-         
-        ),
-        width: widthScreen * 0.4,
-        height: double.infinity,
-         child: SingleChildScrollView(
-           child: Column(
-             children: [
-                 Padding(
-                   padding:  EdgeInsets.all(widthScreen * 0.01),  
-                   child: TextFormField(
-                   
-                      controller: namUserController,
-                      keyboardType: TextInputType.text,
-                    
-                      decoration: decorationTextfield.copyWith(
-                        hintText: "Enter Your Name: ",
-                        suffixIcon: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.person),
-                        ),
-                      ),
-                    ),
-                 ),
-               Padding(
-                 padding:  EdgeInsets.all(widthScreen * 0.01),
-                 child: TextFormField(
-                   
-                   onChanged: (password) {
-                     onPasswordChanged(password);
-                   },
-                   // we return "null" when something is valid
-                   validator: (value) {
-                     return value!.length < 8
-                         ? "Enter at least 8 characters"
-                         : null;
-                   },
-                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                   controller: passwordController,
-                   keyboardType: TextInputType.text,
-                   obscureText: isVisable ? true : false,
-                   decoration: decorationTextfield.copyWith(
-                     hintText: "Enter Your Password : ",
-                     suffixIcon: IconButton(
-                       onPressed: () {
-                         setState(() {
-                           isVisable = !isVisable;
-                         });
-                       },
-                       icon:
-                           isVisable
-                               ? const Icon(Icons.visibility_off)
-                               : const Icon(Icons.visibility),
-                     ),
-                   ),
-                 ),
-               
-               ),
-                      Costumeelevateubutton(
-                        isLoading: isLoading,
-                        text: "Enregistrer",
-                        child: HomeV(),
-                      ),     
-                        const SizedBox(
-                          height: 33,
-                        ),
-                        //Text("Do not have an account?
-               
-             ],
-           ),
-         ),
-           ),
-      ],
-    );
+    final dropdownProvider = Provider.of<DropdownValueProvider>(context);
+    return dropdownProvider.signedIn ? Signup() : Signin();
+    // return Signup();
   }
 }
